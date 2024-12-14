@@ -8,10 +8,15 @@ def replace_apostrophes(content):
     content = content.replace('ʼ', '\'')  
     return content
 
+def replace_long_dashes(content):
+    content = content.replace('—', '-')  # Replace long dash with regular dash
+    return content
+
 def process_text():
     input_text = text_box.get("1.0", tk.END)
     processed_text = input_text.replace('\r\n', '\n').replace('\r', '\n')
     processed_text = replace_apostrophes(processed_text)
+    processed_text = replace_long_dashes(processed_text)
     text_box.delete("1.0", tk.END)
     text_box.insert(tk.END, processed_text)
 
